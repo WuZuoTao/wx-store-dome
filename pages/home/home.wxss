@@ -1,0 +1,14 @@
+/* pages/home/home.wxss */
+.serch-class{
+    border-bottom: 4rpx solid #cdcdcd;
+}
+.item{
+    display: inline-block;
+    width: 22px;
+    margin-left: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    background-color: red;
+    border-radius: 2px;
+}

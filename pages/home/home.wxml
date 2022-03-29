@@ -1,0 +1,77 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+    <view class="row">
+        <van-search value="{{value}}" placeholder="请输入关键字" custom-class="serch-class"></van-search>
+    </view>
+    <view class="row">
+        <van-tabs title-active-color="red" active="{{active}}" bind:chang="onChang">
+            <van-tab title="推荐">
+                <!-- 轮播图 -->
+                <view class="row">
+                    <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+                        <block wx:for="{{bannarsList}}" wx:key="index">
+                            <swiper-item>
+                                <view class="swiper-item">
+                                    <image src="http://localhost:3000{{item.img}}" mode="widthFix" style="width:100%"></image>
+                                </view>
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                </view>
+                <!-- 菜单 -->
+                <view class="row">
+                    <van-grid>
+                        <van-grid-item icon="goods-collect-o" text="限时抢购" icon-color="red"></van-grid-item>
+                        <van-grid-item icon="shop-o" text="积分商城" icon-color="green"></van-grid-item>
+                        <van-grid-item icon="phone-o" text="联系我们" icon-color="blue"></van-grid-item>
+                        <van-grid-item icon="apps-o" text="商城积分" icon-color="orange" url="/pages/cate/cate"></van-grid-item>
+                    </van-grid>
+                </view>
+                <!-- 现时秒杀 -->
+                <view class="row">
+                    <view>
+                        <van-icon name="clock-o" color="red"></van-icon>
+                        <text style="color: red;">限时秒杀</text>
+                        <view>
+                            <text style="color:#999;font-size: 10px;">每天午夜场，好货秒不停</text>
+                        </view>
+                        <van-count-down use-slot time="{{ time}}" bind:change="onTimechang">
+                            <text class="item">{{timeData.hours}}</text>
+                            <text class="item">{{timeData.minutes}}</text>
+                            <text class="item">{{timeData.seconds}}</text>
+                        </van-count-down>
+                        <van-grid column-num="3" border="{{ false }}">
+                            <van-grid-item use-slot wx:for="{{ 3 }}" wx:for-item="index" wx:key="_this">
+                                <image style="width: 100%; height: 90px;" src="https://img.yzcdn.cn/vant/apple-{{ index + 1 }}.jpg" />
+                            </van-grid-item>
+                        </van-grid>
+                    </view>
+                </view>
+                <!-- 广告 -->
+                <view class="row">
+                    <image src="/public/add.webp" style="width: 100%;" mode="widthFix"></image>
+                </view>
+                <!-- 商品列表 -->
+                <view class="row">
+                    <van-tabs type="card">
+                        <van-tab wx:for="{{goodsList}}" wx:key="_this" wx:for-item="tab" title="{{tab.title}}">
+                            <van-card wx:for="{{tab.content}}" wx:key="_this" wx:for-item="item" num="1" price="{{item.price}}" desc="描述信息" title="{{item.goodsname}}" thumb="http://localhost:3000{{item.img}}">
+                            <view slot="footer" bindtap="buyNow" data-id="{{item.id}}">
+                            <van-button size="mini" >立即购买</van-button>
+                            </view>
+                            </van-card>
+                        </van-tab>
+                    </van-tabs>
+                </view>
+
+
+            </van-tab>
+            <van-tab title="女装">内容2</van-tab>
+            <van-tab title="鞋包">内容3</van-tab>
+            <van-tab title="居家">内容4</van-tab>
+            <van-tab title="美食">内容4</van-tab>
+            <van-tab title="服装">内容4</van-tab>
+            <van-tab title="运动">内容4</van-tab>
+        </van-tabs>
+    </view>
+</view>

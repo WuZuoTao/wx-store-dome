@@ -1,0 +1,10 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+    <!-- banner -->
+    <view class="row">
+        <image src="http://localhost:3000{{goodsInfoList.img}}" mode="widthFix"></image>
+    </view>
+    <!-- 名称和价格 -->
+    <!-- 商品信息 -->
+    <!-- 底部tab -->
+</view>

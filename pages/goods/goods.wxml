@@ -1,0 +1,16 @@
+<!--pages/goods/goods.wxml-->
+<view class="container">
+    <van-card wx:for="{{goodsList}}"
+    wx:key="_this" 
+    wx:for-item="item" 
+    num="1" 
+    price="{{item.price}}" 
+    desc="描述信息" 
+    title="{{item.goodsname}}" 
+    thumb="http://localhost:3000{{item.img}}"
+    >
+        <view slot="footer" bindtap="buyNow" data-id="{{item.id}}">
+            <van-button size="mini">立即购买</van-button>
+        </view>
+    </van-card>
+</view>
