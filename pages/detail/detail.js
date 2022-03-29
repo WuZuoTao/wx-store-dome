@@ -5,13 +5,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-        goodsInfoList:[]
+        goodsInfoList:[],
+        id:''
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
         let id = options.id
+        this.setData({
+            id:id
+        })
         this.getGoodsInfo(id)
     },
     // 获取详情页数据
@@ -21,12 +25,17 @@ Page({
           success: res =>{
               this.setData({
                   goodsInfoList: res.data.list[0]
-              })
+              }) 
           }
         })
     },
+    onToCart(){
+        wx.switchTab({
+          url: '/pages/cart/cart',
+        })
+    },
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 生命周期函数--监听页面初次渲染完成 
      */
     onReady: function () {
 

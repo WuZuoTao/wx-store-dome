@@ -1,2 +1,16 @@
 <!--pages/regist/regost.wxml-->
-<text>pages/regist/regost.wxml</text>
+<view class="container">
+    <view class="row">
+        <van-cell-group>
+            <van-field value="{{username}}" required clearable label="用户名"
+            icon="question-o" placeholder="请输入用户名" bind:change="onUserNameChange" />
+            <van-field value="{{password}}" type="password" label="密码" 
+            placeholder="请输入密码" required border="{{ false }}" bind:change="onPassWordChange"
+             />
+             <van-field value="{{phone}}" required clearable label="手机号"
+             icon="question-o" placeholder="请输入手机号"
+             bind:change="onPhoneChange" />
+        </van-cell-group>
+        <van-button text="primary" block round bind:click="regist">注册</van-button>
+    </view>
+</view>

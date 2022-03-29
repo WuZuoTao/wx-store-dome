@@ -1,2 +1,40 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="container">
+    <view class="header">
+        <view class="avatar">
+            <van-image 
+            style="line-height: 5rem;"
+            round
+            width="5rem"
+            height="5rem"
+            src="https://img.yzcdn.cn/vant/cat.jpeg"
+            ></van-image>
+        </view>
+        <view class="user">
+        <text>小强</text>
+        </view>
+        <view class="content">
+            <navigator style="display: inline-block;" url="/pages/login/login"><text style="color: #fff;">登录</text></navigator>
+             | 
+             <navigator style="display: inline-block;" url="/pages/regist/regost"><text style="color: #fff;" >注册</text></navigator>
+        </view> 
+    </view>
+    <!-- 菜单 -->
+    <view class="row">
+        <van-grid column-num="3">
+            <van-grid-item icon="records" text="全部订单"/>
+            <van-grid-item icon="after-sale" text="代付款" />
+            <van-grid-item icon="logistics" text="待收货" />
+        </van-grid>
+    </view>
+    <!-- celis -->
+    <view class="row">
+        <van-cell-group>
+            <van-cell title="地址管理" icon="location-o" is-link />
+            <van-cell title="我的钱包" icon="balance-pay"value="500余额" is-link />
+            <van-cell title="优惠券" icon="discount" is-link />
+            <van-cell title="我的二维码" icon="qr" is-link />
+            <van-cell title="我的小伙伴" icon="contact" is-link />
+        </van-cell-group>
+    </view>
+</view>
