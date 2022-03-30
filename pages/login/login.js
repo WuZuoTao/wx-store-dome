@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        password:'',
+        phone:''
     },
 
     /**
@@ -14,7 +15,39 @@ Page({
     onLoad: function (options) {
 
     },
-
+    onPassWordChange(e){
+        this.setData({
+            password:e.detail
+        })
+    },
+    onPhoneChange(e){
+        this.setData({
+            phone:e.detail
+        })
+    },
+    login(){
+        let {password,phone} = this.data
+        console.log(this.data)
+        if( password && phone){
+            wx.request({
+                url: 'http://localhost:3000/api/login',
+                method:"POST",
+                data:{
+                    password:password,
+                    phone:phone
+                },
+                success: res =>{
+                    console.log(res)
+                    if(res.data.code === 200){
+                        wx.setStorageSync('user', JSON.stringify(res.data.list))
+                        wx.switchTab({
+                          url: '/pages/mine/mine',
+                        })
+                    }
+                }
+              })
+        }
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

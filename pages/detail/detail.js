@@ -5,8 +5,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        goodsInfoList:[],
-        id:''
+        goodsInfoList:{},
+        id:'',
+        num:0
     },
     /**
      * 生命周期函数--监听页面加载
@@ -33,6 +34,35 @@ Page({
         wx.switchTab({
           url: '/pages/cart/cart',
         })
+    },
+    onAddToCart(){
+        let str = wx.getStorageSync('user')
+        if(str){
+        let user = JSON.parse(str)
+        if(user.uid){
+            wx.request({
+                url: 'http://localhost:3000/api/cartadd',
+                method:"POST",
+                data:{
+                    uid:user.uid,
+                    goodsid:this.data.id,
+                    num:1
+                },
+                success: res =>{
+                    if(res.data.code === 200){
+                        this.setData({
+                            num:this.data.num + 1
+                        })
+                    }
+                }
+              })
+        }
+        }else{
+            wx.navigateTo({
+              url: '/pages/login/login?redrect="detail&id="'+this.data.id,
+            })
+        }
+       
     },
     /**
      * 生命周期函数--监听页面初次渲染完成 

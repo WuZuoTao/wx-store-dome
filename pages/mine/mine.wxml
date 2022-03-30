@@ -11,7 +11,7 @@
             ></van-image>
         </view>
         <view class="user">
-        <text>小强</text>
+        <text>{{userInfo}}</text>
         </view>
         <view class="content">
             <navigator style="display: inline-block;" url="/pages/login/login"><text style="color: #fff;">登录</text></navigator>

@@ -1,2 +1,35 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="container">
+    <!-- 地址信息 -->
+    <van-cell-group>
+        <van-cell title="收件人" value="张三" />
+        <van-cell title="收件地址" value="地球上都能找到" />
+    </van-cell-group>
+    <!-- 商品信息 -->
+    <van-swipe-cell wx:for="{{cartList}}" wx:key="_this" right-width="{{65}}" left-width="{{65}}">
+        <view class="cart-item">
+            <view class="cart-item-cover">
+                <image src="http://localhost:3000{{item.img}}" style="width: 80px;height: 80px;" mode="widthFix"></image>
+            </view>
+            <view class="cart-item-des">
+                <view><text>商品名称：{{ item.goodsname }}</text></view>
+                <view><text>商品描述: {{ item.goodsname }}</text></view>
+                <view class="des_bottom"><text>￥{{ item.price}}</text></view>
+            </view>
+            <view class="cart-item-num">
+                <text>x{{item.num}}</text>
+            </view>
+        </view>
+        <view slot="right">删除</view>
+    </van-swipe-cell>
+    <van-cell-group>
+        <van-cell title="配送方式" value="顺丰快递" />
+        <van-cell title="优惠券" value="无可用" />
+        <van-cell title="使用积分" value="可用50积分" />
+    </van-cell-group>
+    <van-submit-bar
+        price="{{ totalPrice }}"
+        button-text="提交订单"
+        bind:submit="onSubmit"
+    />
+</view>

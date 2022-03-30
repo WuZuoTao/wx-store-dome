@@ -1,1 +1,21 @@
 /* pages/cart/cart.wxss */
+.cart-item{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.cart-item .cart-item.radio{
+    width: 40px;
+    line-height: 40px;
+    text-align:center;
+}
+.cart-item .cart.item.cover{
+    width: 80px;
+    height: 80px;
+}
+.cart-item .cart-item-des{
+    width: 100px;
+}
+.cart-item .cart-item-num{
+    flex: 1;
+}
